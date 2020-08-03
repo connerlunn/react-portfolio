@@ -1,0 +1,32 @@
+.navdiv{
+    width: 20%;
+    height: 100%;
+    margin-left: 2.5%;
+    float: left;
+    position: fixed;
+    transform: translateY(15%);    
+}
+
+.avi{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius:50%;
+}
+
+.navlinks {
+    font-size: large;
+}
+
+.navlinks:hover {
+    font-weight: bold;
+    background-color: #A9B4C2;
+    color: #5E6572;
+    cursor: pointer;
+}
+
+.namesection {
+    border-bottom: #EEF1EF;
+    border-bottom-width: thick;
+    border-bottom-style: solid;
+}

@@ -1,0 +1,44 @@
+/*.outerdiv{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: solid medium blue;
+}
+*/
+table { 
+    margin: auto;
+    border-collapse: collapse;
+    font-family: Calibri, sans-serif; 
+    background-color: white;
+}
+
+.playercell {
+    opacity: 50%;
+}
+
+.givencell {
+    text-emphasis: bold;
+}
+
+
+colgroup, tbody {
+    border: solid medium black; 
+}
+
+td {
+    border: solid thin; 
+    height: 2em; 
+    width: 2em; 
+    padding: 0; 
+    text-align: center;
+    color: black;
+    user-select: none;
+}
+
+button {
+    margin: 1%;
+}
+
+.buttondiv {
+    text-align: center;
+}
