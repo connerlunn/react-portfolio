@@ -1,4 +1,4 @@
-function GeneratePuzzle() {
+export function GeneratePuzzle() {
     const newBoard = [[0,9,0,0,0,0,0,0,6], 
     [0,0,0,9,6,0,4,8,5],
     [0,0,0,5,8,1,0,0,0],
@@ -12,10 +12,10 @@ function GeneratePuzzle() {
     return newBoard;
 }
 
-function CheckSolution(board) {
+export function CheckSolution(board) {
     var valid = false;
 
     return valid;
 }
 
-export default GeneratePuzzle
+export default {GeneratePuzzle, CheckSolution}

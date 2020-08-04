@@ -16,8 +16,9 @@ table {
     opacity: 50%;
 }
 
-.givencell {
-    text-emphasis: bold;
+.isgiven {
+    font-weight: bold;
+    font-size: large;
 }
 
 

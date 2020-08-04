@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './Sudoku.css';
-import GeneratePuzzle from '../api/SudokuLogic';
+import {GeneratePuzzle, CheckSolution} from '../api/SudokuLogic';
+import { array } from 'prop-types';
 
 function Cell(props) {
     if(props.isGiven){
-        return <td className='isGiven'>{props.value}</td>;
+        return <td className='isgiven'>{props.value}</td>;
     } else {
         if(props.value == 0){
             return <td onClick={props.onClick}> </td>;
@@ -17,10 +18,11 @@ function Cell(props) {
 class Sudoku extends React.Component {
     constructor(props) {
         super(props);
-            this.state = {
-                board: GeneratePuzzle(),
-            };  
-        }
+        this.state = {
+            board: new Array(9).fill(0).map(() => new Array(9).fill(0)),
+            givens: new Array(9).fill(0).map(() => new Array(9).fill(true)),
+        };  
+    }
 
     OnCellClick(row, col) {
         const newboard = this.state.board.slice();
@@ -33,7 +35,24 @@ class Sudoku extends React.Component {
     }
 
     InitNewPuzzle() {
-        this.setState({board: GeneratePuzzle()});
+        const newBoard = GeneratePuzzle()
+        this.setState({
+            board: newBoard,
+            givens: newBoard.map((row) => {
+                return row.map((value) => {
+                    if (value != 0){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                })
+            })
+        });
+    }
+
+    CheckSolution() {
+        const check = CheckSolution(this.state.board)
+        return check;
     }
 
     renderRow(i) {
@@ -41,12 +60,17 @@ class Sudoku extends React.Component {
         return row.map((value, index) => 
             <Cell 
                 value={value} 
-                isGiven={false} 
+                isGiven={this.state.givens[i][index]} 
                 key={index} 
                 onClick={() => this.OnCellClick(i, index)}
             />
         );
     }
+
+    componentDidMount() {
+        this.InitNewPuzzle()
+    }
+
 
     render() {
         return(
@@ -73,7 +97,7 @@ class Sudoku extends React.Component {
                 </table>
 
                 <div className='buttondiv'>
-                    <button>Check Solution</button>
+                    <button onClick={() => this.CheckSolution()}>Check Solution</button>
                     <button onClick={() => this.InitNewPuzzle()}>New Sudoku</button>
                 </div>
             </div>
